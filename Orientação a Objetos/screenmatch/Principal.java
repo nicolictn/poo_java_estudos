@@ -2,6 +2,8 @@ package screenmatch;
 
 //é necessário fazer o import dos pacotes para acessar os dados
 import screenmatch.br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
+import screenmatch.br.com.alura.screenmatch.calculos.FiltroRecomendacao;
+import screenmatch.br.com.alura.screenmatch.modelos.Episodio;
 import screenmatch.br.com.alura.screenmatch.modelos.Filme;
 import screenmatch.br.com.alura.screenmatch.modelos.Serie;
 
@@ -22,6 +24,9 @@ public class Principal {
         System.out.println("Total de avaliações: " + filme1.getTotalDasAvaliacoes());
         System.out.println("Média de avaliações do filme: " + filme1.pegaMedia() + ".");
         System.out.println("-------------------------------------------------------------------");
+
+        System.out.println("-------------------------------------");
+
         //SERIE
         Serie lost = new Serie();
         lost.setNome("Lost");
@@ -35,10 +40,11 @@ public class Principal {
         //FILME
         //instanciando um objeto
         Filme filme2 = new Filme();
-
         filme2.setNome("Avatar");
         filme2.setAnoDeLancamento(2023);
         filme2.setDuracaoEmMinutos(200);
+
+        System.out.println("-------------------------------------");
 
         //CALCULADORA PARA VERIFICAR QUANTO TEMPO DE FILME FOI ASSISTIDO
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
@@ -46,5 +52,18 @@ public class Principal {
         calculadora.inclui(filme2);
         calculadora.inclui(lost);
         System.out.println(calculadora.getTempoTotal());
+
+        System.out.println("-------------------------------------");
+
+        FiltroRecomendacao filtro = new FiltroRecomendacao();
+        filtro.filtra(filme1);
+
+        System.out.println("-------------------------------------");
+
+        Episodio episodio01 = new Episodio();
+        episodio01.setNumero(1);
+        episodio01.setSerie(lost);
+        episodio01.setTotalVisualizacoes(300);
+        filtro.filtra((episodio01));
     }
 }

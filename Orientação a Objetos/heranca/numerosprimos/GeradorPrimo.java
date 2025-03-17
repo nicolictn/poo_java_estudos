@@ -1,5 +1,4 @@
 package heranca.numerosprimos;
 
-public class NumerosPrimos {
-
+public class GeradorPrimo {
 }
